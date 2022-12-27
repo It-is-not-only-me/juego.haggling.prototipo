@@ -1,39 +1,24 @@
 using System.Collections;
-using UnityEngine;
-
-public class CaracteristicasDeObjeto : ScriptableObject
-{
-    [SerializeField] private int _precioBase;
-
-    public int PrecioBase { get => _precioBase; }
-
-}
+using System.Collections.Generic;
+using System.Linq;
 
 public class Objeto : IObjeto
 {
-    private CaracteristicasDeObjeto _caracteristicas;
+    private CaracteristicasDeObjeto _caracteristicasDelObjeto;
+    
+    private List<ICaracteristica> _caracteristicas;
 
-    public Objeto(CaracteristicasDeObjeto caracteristicas)
+    public Objeto(List<ICaracteristica> caracteristicas, CaracteristicasDeObjeto caracteristicasDelObjeto)
     {
-        _caracteristicas = caracteristicas;
+        _caracteristicasDelObjeto = caracteristicasDelObjeto;
+        _caracteristicas = caracteristicas; 
     }
 
-    public int PrecioBase => _caracteristicas.PrecioBase;
-}
+    public int PrecioBase => _caracteristicasDelObjeto.PrecioBase;
 
-public interface IObjeto
-{
-    public int PrecioBase { get; }
-}
+    public CaracteristicasDeObjeto Caracteristicas => _caracteristicasDelObjeto;
 
-public class Promesa : IObjeto
-{
-    private IObjeto _objeto;
+    public int PrecioSubjetivo(IPersona persona) => persona.PrecioSubjetivo(this);
 
-    public Promesa(IObjeto objeto)
-    {
-        _objeto = objeto;
-    }
-
-    public int PrecioBase => _objeto.PrecioBase;
+    public bool TieneCaracteristica(ICaracteristica caracteristica) => _caracteristicas.Any(caracteristicaParticula => caracteristicaParticula.EsIgual(caracteristica));
 }
