@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Objeto", menuName = "Haggling/Objeto")]
 public class ObjetoSO : ScriptableObject, IObjeto
 {
     [SerializeField] private CaracteristicasDeObjeto _caracteristicasDelObjeto;

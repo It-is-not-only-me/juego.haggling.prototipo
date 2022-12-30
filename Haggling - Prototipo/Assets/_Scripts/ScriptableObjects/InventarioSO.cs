@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Inventario", menuName = "Haggling/Inventario")]
 public class InventarioSO : ScriptableObject
 {
     [SerializeField] private EventoObjeto _sacarObjeto, _agregarObjeto;
@@ -13,14 +14,20 @@ public class InventarioSO : ScriptableObject
     {
         _inventario = new InventarioLimitado(_cantidadMaxima);
 
-        _sacarObjeto.Evento += SacarObjeto;
-        _agregarObjeto.Evento += AgregarObjeto; 
+        if (_sacarObjeto != null)
+            _sacarObjeto.Evento += SacarObjeto;
+
+        if (_agregarObjeto != null)
+            _agregarObjeto.Evento += AgregarObjeto; 
     }
 
     private void OnDisable()
     {
-        _sacarObjeto.Evento -= SacarObjeto;
-        _agregarObjeto.Evento -= AgregarObjeto;
+        if (_sacarObjeto != null)
+            _sacarObjeto.Evento -= SacarObjeto;
+
+        if (_agregarObjeto != null)
+            _agregarObjeto.Evento -= AgregarObjeto;
     }
 
     private void AgregarObjeto(IObjeto objeto)

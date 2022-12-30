@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Caracteristica", menuName = "Boop/Caracteristica")]
+[CreateAssetMenu(fileName = "Caracteristica", menuName = "Haggling/Caracteristica")]
 public class Caracteristica : ScriptableObject, ICaracteristica
 {
     [SerializeField] private List<Caracteristica> _caracteristicas = new List<Caracteristica>();

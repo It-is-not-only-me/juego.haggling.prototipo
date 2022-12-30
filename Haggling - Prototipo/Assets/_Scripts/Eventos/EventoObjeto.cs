@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Evento objeto", menuName = "Boop/Eventos/Evento objeto")]
+[CreateAssetMenu(fileName = "Evento objeto", menuName = "Haggling/Eventos/Evento objeto")]
 public class EventoObjeto : ScriptableObject
 {
     public Action<IObjeto> Evento;
