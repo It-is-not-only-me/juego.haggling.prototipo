@@ -4,22 +4,28 @@ using UnityEngine;
 
 namespace Haggling
 {
-    public class NPC : MonoBehaviour
+    public class PersonaBehaviour : MonoBehaviour
     {
+        [SerializeField] private EventoObjeto _agregarObjetoInventario;
+
+        [Space]
+
         [SerializeField] private DatosPersonaSO _datosPersona;
         [SerializeField] private ConfiguracionInventarioSO _datosInventario;
 
         private Persona _persona;
         private List<IObjeto> _inventario;
 
-        private void Awake()
+        private void Start()
         {
             _persona = new Persona(_datosPersona.Nombre, _datosPersona.Trabajo);
             _inventario = new List<IObjeto>();
 
             for (int i = 0; i < _datosPersona.Objetos.Count && i < _datosInventario.CantidadSlots; i++)
             {
-                _inventario.Add(_datosPersona.Objetos[i]);
+                IObjeto objeto = _datosPersona.Objetos[i];
+                _inventario.Add(objeto);
+                _agregarObjetoInventario?.Invoke(objeto);
             }
         }
 

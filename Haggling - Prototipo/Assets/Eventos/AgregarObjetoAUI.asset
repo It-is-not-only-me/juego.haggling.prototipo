@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd36c2650a0c3f646ac9233ecdcaf804, type: 3}
-  m_Name: Configuracion de slot
+  m_Script: {fileID: 11500000, guid: 64eea1874402d8b47b8d2a0d73087e15, type: 3}
+  m_Name: AgregarObjetoAUI
   m_EditorClassIdentifier: 
-  _dimensiones: {x: 50, y: 50}
-  _espaciado: {x: 6, y: 6}
-  _posicionDeSlot: 4

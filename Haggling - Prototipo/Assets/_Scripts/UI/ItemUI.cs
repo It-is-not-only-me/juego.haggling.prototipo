@@ -23,7 +23,11 @@ namespace Haggling
             _imagen = GetComponent<Image>();
         }
 
-        public void Inicializar(IObjeto objeto) => _objeto = objeto;
+        public void Inicializar(IObjeto objeto, Canvas canvas)
+        {
+            _objeto = objeto;
+            _canvas = canvas;
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {

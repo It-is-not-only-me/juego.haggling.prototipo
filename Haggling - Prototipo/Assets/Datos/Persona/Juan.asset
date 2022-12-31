@@ -16,3 +16,5 @@ MonoBehaviour:
   _trabajo: {fileID: 11400000, guid: 58266d9eb8158eb44ab4a4b7455d43e9, type: 2}
   _objetos:
   - {fileID: 11400000, guid: dd8af0cc0007cb44f994a1da04f12a30, type: 2}
+  - {fileID: 11400000, guid: dd8af0cc0007cb44f994a1da04f12a30, type: 2}
+  - {fileID: 11400000, guid: dd8af0cc0007cb44f994a1da04f12a30, type: 2}
