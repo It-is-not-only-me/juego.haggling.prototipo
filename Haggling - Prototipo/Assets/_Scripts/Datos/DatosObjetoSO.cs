@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Haggling
 {
-    [CreateAssetMenu(fileName = "Objeto", menuName = "Haggling/Objeto")]
-    public class ObjetoSO : ScriptableObject, IObjeto
+    [CreateAssetMenu(fileName = "Objeto", menuName = "Haggling/Datos/Objeto")]
+    public class DatosObjetoSO : ScriptableObject, IObjeto
     {
         [SerializeField] private string _nombre;
-        [SerializeField] private ITag[] _tags;
         [SerializeField] private int _precio;
+        [SerializeField] private List<DatosTagSO> _tags;
 
         public string Nombre { get => _nombre; }
 

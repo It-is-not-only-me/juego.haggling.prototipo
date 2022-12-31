@@ -10,7 +10,7 @@ namespace Haggling
     {
         [SerializeField] private EventoObjeto _agregarObjeto, _sacarObjeto;
 
-        [SerializeField] private ItemUI _itemPrefab;
+        private bool _tieneItem = false;
 
         public void Inicializar(EventoObjeto agregarObjeto, EventoObjeto sacarObjeto)
         {
@@ -24,26 +24,18 @@ namespace Haggling
             if (!suelta.TryGetComponent(out ItemUI item))
                 return;
 
-            AgregarItem(item);
-        }
-
-        public void CrearObjeto(IObjeto objeto)
-        {
-            ItemUI item = Instantiate(_itemPrefab);
-            item.Inicializar(objeto);
-            item.transform.name = objeto.Nombre;
-            AgregarItem(item);
-        }
-
-        public void EliminarObjeto()
-        {
-            while (transform.childCount > 0)
-                Destroy(transform.GetChild(0));
-        }
-
-        private void AgregarItem(ItemUI item)
-        {
             item.SetearNuevoPadre(this);
+        }
+
+        public bool AgregarItem(ItemUI item)
+        {
+            if (_tieneItem)
+                return false;
+
+            item.SetearNuevoPadre(this);
+            item.VincularAPadre();
+            _tieneItem = true;
+            return true;
         }
 
         public void AgregarObjeto(IObjeto objeto) => _agregarObjeto?.Invoke(objeto);

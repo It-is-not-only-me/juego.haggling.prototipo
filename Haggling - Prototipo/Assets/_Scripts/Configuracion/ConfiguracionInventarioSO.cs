@@ -2,8 +2,8 @@
 
 namespace Haggling
 {
-    [CreateAssetMenu(fileName = "Datos de inventario", menuName = "Haggling/Configuracion/Datos de inventario")]
-    public class DatosInventarioSO : ScriptableObject
+    [CreateAssetMenu(fileName = "Configuracion de inventario", menuName = "Haggling/Configuracion/Configuracion de inventario")]
+    public class ConfiguracionInventarioSO : ScriptableObject
     {
         [SerializeField] private int _cantidadSlots;
         [SerializeField] private EventoObjeto _agregarObjeto, _sacarObjeto;

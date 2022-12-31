@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,38 +11,34 @@ namespace Haggling
 
         [Space]
 
-        [SerializeField] private DatosInventarioSO _datosInventario;
-        [SerializeField] private DatosSlotSO _datos;
+        [SerializeField] private ConfiguracionInventarioSO _datosInventario;
+        [SerializeField] private ConfiguracionSlotSO _datos;
 
-        private LazyDato<GridLayoutGroup> _layout => new LazyDato<GridLayoutGroup>(() => GetComponent<GridLayoutGroup>());
+        private GridLayoutGroup _layout = null;
+        private GridLayoutGroup _getLayout
+        {
+            get
+            {
+                if (_layout == null)
+                    _layout = GetComponent<GridLayoutGroup>();
+                return _layout;
+            }
+        }
 
-        private LazyDato<Pila<SlotUI>> _slots = new LazyDato<Pila<SlotUI>>(() => new Pila<SlotUI>());
+        private List<SlotUI> _slots = new List<SlotUI>();
 
-        private void Start()
+        private void Awake()
         {
             GenerarInventario();
-        }
-
-        public void AgregarObjeto(ObjetoSO objeto)
-        {
-            _slots.Dato.Elemento.AgregarObjeto(objeto);
-            _slots.Dato.Avanzar();
-        }
-
-        public void SacarOBjeto()
-        {
-            _slots.Dato.Elemento.EliminarObjeto();
-            _slots.Dato.Retroceder();
         }
 
         [ContextMenu("Recalcular inventario")]
         private void GenerarInventario()
         {
             EliminarHijos();
-            GridLayoutGroup layout = _layout.Dato;
-            layout.cellSize = _datos.Dimensiones;
-            layout.spacing = _datos.Espaciado;
-            layout.childAlignment = _datos.PosicionDeSlot;
+            _getLayout.cellSize = _datos.Dimensiones;
+            _getLayout.spacing = _datos.Espaciado;
+            _getLayout.childAlignment = _datos.PosicionDeSlot;
 
             for (int i = 0; i < _datosInventario.CantidadSlots; i++)
             {
@@ -50,8 +47,15 @@ namespace Haggling
 
                 SlotUI slot = slotGameObject.GetComponent<SlotUI>();
                 slot.Inicializar(_datosInventario.AgregarObjeto, _datosInventario.SacarObjeto);
-                _slots.Dato.Agregar(slot);
+                _slots.Add(slot);
             }
+        }
+
+        public void AgregarItem(ItemUI item)
+        {
+            bool sePudoAgregar = false;
+            for (int i = 0; i < _slots.Count && !sePudoAgregar; i++)
+                sePudoAgregar |= _slots[i].AgregarItem(item);
         }
 
         private void EliminarHijos()
@@ -64,7 +68,7 @@ namespace Haggling
                 else
                     Destroy(transformacion.GetChild(0).gameObject);
             }
-            _slots.Dato.Clear();
+            _slots.Clear();
         }
 
     }

@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 namespace Haggling
 {
-    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(RectTransform), typeof(Image))]
     public class ItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private Canvas _canvas;
-        [SerializeField] private Image _imagen;
-
+        
+        private Image _imagen;
         private RectTransform _posicion;
 
         private IObjeto _objeto;
@@ -20,6 +20,7 @@ namespace Haggling
         private void Awake()
         {
             _posicion = GetComponent<RectTransform>();
+            _imagen = GetComponent<Image>();
         }
 
         public void Inicializar(IObjeto objeto) => _objeto = objeto;
@@ -27,7 +28,7 @@ namespace Haggling
         public void OnBeginDrag(PointerEventData eventData)
         {
             _imagen.raycastTarget = false;
-            _padre.SacarObjeto(_objeto);
+            _padre?.SacarObjeto(_objeto);
             _padreTransform = transform.parent;
 
             transform.SetParent(transform.root);
@@ -42,8 +43,8 @@ namespace Haggling
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            transform.SetParent(_padreTransform);
-            _padre.AgregarObjeto(_objeto);
+            VincularAPadre();
+            _padre?.AgregarObjeto(_objeto);
             _imagen.raycastTarget = true;
         }
 
@@ -51,6 +52,11 @@ namespace Haggling
         {
             _padre = nuevoPadre;
             _padreTransform = _padre.transform;
+        }
+
+        public void VincularAPadre()
+        {
+            transform.SetParent(_padreTransform);
         }
     }
 

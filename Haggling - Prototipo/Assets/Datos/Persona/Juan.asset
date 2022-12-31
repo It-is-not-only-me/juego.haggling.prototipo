@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e00e842baa7844690711ebb916f999, type: 3}
-  m_Name: Inventario Usuario
+  m_Script: {fileID: 11500000, guid: f09d0c0384502bb4385ecb5183ad6ad3, type: 3}
+  m_Name: Juan
   m_EditorClassIdentifier: 
-  _cantidadSlots: 12
-  _agregarObjeto: {fileID: 0}
-  _sacarObjeto: {fileID: 0}
+  _nombre: Juan
+  _trabajo: {fileID: 11400000, guid: 58266d9eb8158eb44ab4a4b7455d43e9, type: 2}
+  _objetos:
+  - {fileID: 11400000, guid: dd8af0cc0007cb44f994a1da04f12a30, type: 2}

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a562623b278514bab637ad0df88a48, type: 3}
+  m_Script: {fileID: 11500000, guid: 809f125d20ff3944680faf9a3b873aec, type: 3}
   m_Name: Martillo
   m_EditorClassIdentifier: 
   _nombre: Martillo
-  _relacionadas: []
+  _precio: 20
+  _tags:
+  - {fileID: 11400000, guid: b77c9b0bf68cf1145972b85876225a25, type: 2}

@@ -2,8 +2,8 @@
 
 namespace Haggling
 {
-    [CreateAssetMenu(fileName = "Datos de slot", menuName = "Haggling/Configuracion/Datos de slot")]
-    public class DatosSlotSO : ScriptableObject
+    [CreateAssetMenu(fileName = "Configuracion de slot", menuName = "Haggling/Configuracion/Configuracion de slot")]
+    public class ConfiguracionSlotSO : ScriptableObject
     {
         [SerializeField] private Vector2 _dimensiones, _espaciado;
         [SerializeField] private TextAnchor _posicionDeSlot;

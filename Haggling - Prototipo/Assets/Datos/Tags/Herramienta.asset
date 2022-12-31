@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Herramienta
   m_EditorClassIdentifier: 
   _nombre: Herramienta
-  _relacionadas:
-  - {fileID: 11400000, guid: 6fb320c865c369143bcb447c8a3f8508, type: 2}
+  _relacionadas: []

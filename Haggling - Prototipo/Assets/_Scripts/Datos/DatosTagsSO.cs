@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Haggling
 {
-    [CreateAssetMenu(fileName = "Tag", menuName = "Haggling/Tag")]
-    public class TagSO : ScriptableObject, ITag
+    [CreateAssetMenu(fileName = "Tag", menuName = "Haggling/Datos/Tag")]
+    public class DatosTagSO : ScriptableObject, ITag
     {
         [SerializeField] private string _nombre;
-        [SerializeField] private TagSO[] _relacionadas;
+        [SerializeField] private DatosTagSO[] _relacionadas;
 
         public bool TieneRelacionCon(ITag tag)
         {
@@ -24,10 +24,10 @@ namespace Haggling
 
         public bool EsIgual(ITag tag)
         {
-            return (tag as TagSO).EsIgual(this);
+            return (tag as DatosTagSO).EsIgual(this);
         }
 
-        private bool EsIgual(TagSO tag)
+        private bool EsIgual(DatosTagSO tag)
         {
             return GetInstanceID() == tag.GetInstanceID();
         }

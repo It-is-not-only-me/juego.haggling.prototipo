@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd36c2650a0c3f646ac9233ecdcaf804, type: 3}
-  m_Name: Datos de slot
+  m_Name: Configuracion de slot
   m_EditorClassIdentifier: 
   _dimensiones: {x: 200, y: 200}
   _espaciado: {x: 50, y: 50}
