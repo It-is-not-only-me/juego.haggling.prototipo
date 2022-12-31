@@ -12,6 +12,12 @@ namespace Haggling
 
         [SerializeField] private ItemUI _itemPrefab;
 
+        public void Inicializar(EventoObjeto agregarObjeto, EventoObjeto sacarObjeto)
+        {
+            _agregarObjeto = agregarObjeto;
+            _sacarObjeto = sacarObjeto;
+        }
+
         public void OnDrop(PointerEventData eventData)
         {
             GameObject suelta = eventData.pointerDrag;
@@ -21,7 +27,7 @@ namespace Haggling
             AgregarItem(item);
         }
 
-        public void CrearObjeto(Objeto objeto)
+        public void CrearObjeto(IObjeto objeto)
         {
             ItemUI item = Instantiate(_itemPrefab);
             item.Inicializar(objeto);
@@ -40,8 +46,8 @@ namespace Haggling
             item.SetearNuevoPadre(this);
         }
 
-        public void AgregarObjeto(Objeto objeto) => _agregarObjeto?.Invoke(objeto);
+        public void AgregarObjeto(IObjeto objeto) => _agregarObjeto?.Invoke(objeto);
 
-        public void SacarObjeto(Objeto objeto) => _sacarObjeto?.Invoke(objeto);
+        public void SacarObjeto(IObjeto objeto) => _sacarObjeto?.Invoke(objeto);
     }
 }

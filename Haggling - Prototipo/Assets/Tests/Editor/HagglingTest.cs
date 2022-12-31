@@ -7,6 +7,32 @@ using Haggling;
 
 public class HagglingTest
 {
+    public struct ObjetoTest : IObjeto
+    {
+        private string _nombre;
+        private ITag[] _tags;
+        private int _precio;
+
+        public ObjetoTest(string nombre, ITag[] tags, int precio)
+        {
+            _nombre = nombre;
+            _tags = tags;
+            _precio = precio;
+        }
+
+        public string Nombre { get => _nombre; }
+
+        public int PrecioBase => _precio;
+
+        public bool TieneVinculoConTag(ITag tag)
+        {
+            bool tieneVinculo = false;
+            foreach (ITag tagActual in _tags)
+                tieneVinculo |= tag.TieneRelacionCon(tagActual);
+            return tieneVinculo;
+        }
+    }
+
     public struct TagTest : ITag
     {
         private static int _contador = 0;
@@ -109,7 +135,7 @@ public class HagglingTest
         Persona juan = new Persona("Juan", null);
 
         int precioBase = 20;
-        Objeto libro = new Objeto("Martillo", new ITag[2] {
+        ObjetoTest libro = new ObjetoTest("Martillo", new ITag[2] {
             _construir,
             _destruir
         }, precioBase);
@@ -127,7 +153,7 @@ public class HagglingTest
         Persona juan = new Persona("Juan", artista);
 
         int precioBase = 20;
-        Objeto libro = new Objeto("Martillo", new ITag[2] {
+        ObjetoTest libro = new ObjetoTest("Martillo", new ITag[2] {
             _construir,
             _destruir
         }, precioBase);

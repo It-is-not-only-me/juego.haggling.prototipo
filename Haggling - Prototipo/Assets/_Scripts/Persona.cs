@@ -16,9 +16,9 @@ namespace Haggling
             _trabajo = trabajo;
         }
 
-        public int PrecioSubjetivo(Objeto objeto)
+        public int PrecioSubjetivo(IObjeto objeto)
         {
-            int precioFinal = objeto.PrecioBase();
+            int precioFinal = objeto.PrecioBase;
             if (_trabajo == null)
                 return precioFinal;
 

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd36c2650a0c3f646ac9233ecdcaf804, type: 3}
-  m_Name: Datos de slot
+  m_Script: {fileID: 11500000, guid: 46e41e53b4d4fc54d829f0ebe2f5fccb, type: 3}
+  m_Name: Inventario Usuario
   m_EditorClassIdentifier: 
-  _dimensiones: {x: 200, y: 200}
-  _espaciado: {x: 50, y: 50}
-  _posicionDeSlot: 4
+  _cantidadSlots: 12
+  _agregarObjeto: {fileID: 0}
+  _sacarObjeto: {fileID: 0}

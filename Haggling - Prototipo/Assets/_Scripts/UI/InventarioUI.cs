@@ -22,7 +22,7 @@ namespace Haggling
             GenerarInventario();
         }
 
-        public void AgregarObjeto(Objeto objeto)
+        public void AgregarObjeto(ObjetoSO objeto)
         {
             _slots.Dato.Elemento.AgregarObjeto(objeto);
             _slots.Dato.Avanzar();
@@ -45,10 +45,12 @@ namespace Haggling
 
             for (int i = 0; i < _datosInventario.CantidadSlots; i++)
             {
-                GameObject slot = Instantiate(_slotPrefav, transform);
-                slot.name = $"Slot ({i})";
+                GameObject slotGameObject = Instantiate(_slotPrefav, transform);
+                slotGameObject.name = $"Slot ({i})";
 
-                _slots.Dato.Agregar(slot.GetComponent<SlotUI>());
+                SlotUI slot = slotGameObject.GetComponent<SlotUI>();
+                slot.Inicializar(_datosInventario.AgregarObjeto, _datosInventario.SacarObjeto);
+                _slots.Dato.Agregar(slot);
             }
         }
 

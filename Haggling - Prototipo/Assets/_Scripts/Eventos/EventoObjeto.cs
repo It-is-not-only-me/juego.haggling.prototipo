@@ -6,8 +6,8 @@ namespace Haggling
     [CreateAssetMenu(fileName = "Evento objeto", menuName = "Haggling/Eventos/Evento objeto")]
     public class EventoObjeto : ScriptableObject
     {
-        public Action<Objeto> Evento;
+        public Action<IObjeto> Evento;
 
-        public void Invoke(Objeto objeto) => Evento?.Invoke(objeto);
+        public void Invoke(IObjeto objeto) => Evento?.Invoke(objeto);
     }
 }

@@ -12,7 +12,7 @@ namespace Haggling
 
         private RectTransform _posicion;
 
-        private Objeto _objeto;
+        private IObjeto _objeto;
 
         private SlotUI _padre;
         private Transform _padreTransform;
@@ -22,7 +22,7 @@ namespace Haggling
             _posicion = GetComponent<RectTransform>();
         }
 
-        public void Inicializar(Objeto objeto) => _objeto = objeto;
+        public void Inicializar(IObjeto objeto) => _objeto = objeto;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
