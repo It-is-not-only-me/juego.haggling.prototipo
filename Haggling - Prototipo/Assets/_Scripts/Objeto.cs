@@ -13,6 +13,8 @@
             _precio = precio;
         }
 
+        public string Nombre { get => _nombre; }
+
         public int PrecioBase() => _precio;
 
         public bool TieneVinculoConTag(ITag tag)
