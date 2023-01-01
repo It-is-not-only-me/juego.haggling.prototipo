@@ -62,6 +62,11 @@ namespace Haggling
         {
             transform.SetParent(_padreTransform);
         }
+
+        public bool TieneObjeto(IObjeto objeto)
+        {
+            return objeto == _objeto;
+        }
     }
 
 }

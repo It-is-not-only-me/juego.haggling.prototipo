@@ -58,6 +58,13 @@ namespace Haggling
                 sePudoAgregar |= _slots[i].AgregarItem(item);
         }
 
+        public void SacarObjeto(IObjeto objeto)
+        {
+            bool sePuedeSacar = false;
+            for (int i = 0; i < _slots.Count && !sePuedeSacar; i++)
+                sePuedeSacar |= _slots[i].SacarObjetoDeItem(objeto);
+        }
+
         private void EliminarHijos()
         {
             Transform transformacion = transform;

@@ -6,7 +6,7 @@ namespace Haggling
 {
     public class PersonaBehaviour : MonoBehaviour
     {
-        [SerializeField] private EventoObjeto _agregarObjetoInventario;
+        [SerializeField] private EventoObjeto _agregarObjetoInventario, _sacarObjetoInventario;
 
         [Space]
 

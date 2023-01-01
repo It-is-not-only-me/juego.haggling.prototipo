@@ -7,7 +7,7 @@ namespace Haggling
     [RequireComponent(typeof(InventarioUI))]
     public class CargarInventario : MonoBehaviour
     {
-        [SerializeField] private EventoObjeto _agregarObjeto;
+        [SerializeField] private EventoObjeto _agregarObjeto, _sacarObjeto;
 
         [Space]
 
@@ -29,12 +29,18 @@ namespace Haggling
         {
             if (_agregarObjeto != null)
                 _agregarObjeto.Evento += AgregarObjeto;
+
+            if (_sacarObjeto != null)
+                _sacarObjeto.Evento += SacarObjeto;
         }
 
         private void OnDisable()
         {
             if (_agregarObjeto != null)
                 _agregarObjeto.Evento -= AgregarObjeto;
+
+            if (_sacarObjeto != null)
+                _sacarObjeto.Evento -= SacarObjeto;
         }
 
         public void AgregarObjeto(IObjeto objeto)
@@ -45,6 +51,11 @@ namespace Haggling
             ItemUI item = itemGameObject.GetComponent<ItemUI>();
             item.Inicializar(objeto, _canvas);
             _getInventario.AgregarItem(item);
+        }
+
+        public void SacarObjeto(IObjeto objeto)
+        {
+            _getInventario.SacarObjeto(objeto);
         }
     }
 }
